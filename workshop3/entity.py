@@ -18,3 +18,6 @@ while True:
     if message == ENTITY_ID:
         response = f"{ENTITY_ID}:{socket.gethostbyname(socket.gethostname())}"
         sock.sendto(response.encode(), addr)
+        
+        
+    
