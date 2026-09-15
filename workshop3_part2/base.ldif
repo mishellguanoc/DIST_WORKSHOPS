@@ -1,0 +1,7 @@
+dn: ou=People,dc=maki,dc=com
+objectClass: organizationalUnit
+ou: People
+
+dn: ou=Groups,dc=maki,dc=com
+objectClass: organizationalUnit
+ou: Groups

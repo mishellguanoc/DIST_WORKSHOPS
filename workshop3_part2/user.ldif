@@ -1,0 +1,6 @@
+dn: uid=ismael,ou=People,dc=maki,dc=com
+objectClass: inetOrgPerson
+uid: ismael
+sn: Paredes
+cn: Ismael Paredes
+userPassword: password
