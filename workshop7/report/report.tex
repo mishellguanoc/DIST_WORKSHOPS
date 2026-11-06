@@ -1,0 +1,143 @@
+% Workshop 7 report skeleton. Limit: 4 pages in total.
+% Put each screenshot in report/screenshots/ with the exact name used below.
+% A missing image compiles as a grey box, so this file builds at any stage.
+\documentclass[conference]{IEEEtran}
+
+\usepackage[T1]{fontenc}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{booktabs}
+\usepackage{url}
+
+\newcommand{\todo}[1]{\textcolor{red}{[TODO: #1]}}
+
+% \shot{file}{caption}{label}: one-column figure.
+\newcommand{\shot}[3]{%
+  \begin{figure}[!t]
+    \centering
+    \IfFileExists{screenshots/#1}{%
+      \includegraphics[width=\columnwidth]{screenshots/#1}%
+    }{%
+      \fcolorbox{gray}{gray!15}{\parbox[c][2.5cm][c]{0.92\columnwidth}{%
+        \centering\footnotesize Missing: \texttt{screenshots/\detokenize{#1}}}}%
+    }
+    \caption{#2}
+    \label{#3}
+  \end{figure}%
+}
+
+\lstset{
+  basicstyle=\ttfamily\scriptsize,
+  columns=fullflexible,
+  breaklines=true,
+  frame=single,
+  aboveskip=4pt,
+  belowskip=4pt
+}
+
+\begin{document}
+
+\title{Workshop 7: Data Interchange Using JSON\\
+\large Schema-Validated and Schema-Less Services in a WhatsApp Farewell Scheduler}
+
+\author{\IEEEauthorblockN{Ismael Paredes}
+\IEEEauthorblockA{Distributed Systems, Semester II 2026 --- Prof. Francisco Hidrobo\\
+Yachay Tech University\\
+\todo{delivery date}}}
+
+\maketitle
+
+\begin{abstract}
+\todo{3--4 sentences: what was built, the two services, the main measured result.}
+\end{abstract}
+
+\section{Objectives}
+\todo{Exchange data between two components on different machines; define and enforce JSON Schemas for a request and its response; repeat without a schema; compare bytes, transfer latency and processing overhead.}
+
+\section{Environment and Network Configuration}
+\todo{Short description of the two machines and why traffic flows from Windows to WSL.}
+
+\begin{table}[!t]
+  \caption{Deployment}
+  \label{tab:deployment}
+  \centering
+  \footnotesize
+  \begin{tabular}{lll}
+    \toprule
+    & Machine A & Machine B \\
+    \midrule
+    Host     & Windows 11      & WSL2 Ubuntu \\
+    IP       & \todo{IP}       & \todo{IP} \\
+    Python   & \todo{version}  & \todo{version} \\
+    Role     & Clients, benchmark & FastAPI services \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\shot{01_environments.png}{Hostname, IP address and Python version on both machines.}{fig:env}
+
+\section{Services and Schemas}
+
+\subsection{Activity 1: \texttt{POST /webhook} (with schema)}
+\todo{Service description: the WhatsApp mock dispatcher delivers a customer message to the ingestion component, which assigns a partition and acknowledges. Where validation happens on each side.}
+
+\begin{lstlisting}[caption={Excerpt of the request schema.},label={lst:schema}]
+TODO: short excerpt of webhook_request.schema.json
+\end{lstlisting}
+
+\shot{02_schema_tests.png}{Schema test suite.}{fig:tests}
+\shot{03_activity1_exchange.png}{Valid request and response on both machines.}{fig:a1}
+\shot{04_validation_rejections.png}{Invalid data rejected by the client and by the server, and an invalid response detected.}{fig:reject}
+
+\subsection{Activity 2: \texttt{POST /messages} (no schema)}
+\todo{Service description: the scheduler dispatcher sends a message to the WhatsApp mock, which accepts it or answers 400/131047 outside the 24-hour window. Fields are read dynamically.}
+
+\shot{05_activity2_exchange.png}{Schema-less request and response.}{fig:a2}
+\shot{06_schemaless_bad_data.png}{Malformed data accepted by the schema-less service.}{fig:bad}
+
+\section{Experiments and Results}
+\todo{Method: cases A, A-control and B; number of requests; warm-up; keep-alive; how bytes, latency and overhead are measured.}
+
+\begin{table}[!t]
+  \caption{Results Summary}
+  \label{tab:results}
+  \centering
+  \footnotesize
+  \begin{tabular}{lrrr}
+    \toprule
+    Metric & A (schema) & A-control & B (no schema) \\
+    \midrule
+    Request body (B)        & -- & -- & -- \\
+    Response body (B)       & -- & -- & -- \\
+    Total with headers (B)  & -- & -- & -- \\
+    RTT median (ms)         & -- & -- & -- \\
+    RTT p95 (ms)            & -- & -- & -- \\
+    Transfer latency (ms)   & -- & -- & -- \\
+    Client overhead ($\mu$s) & -- & -- & -- \\
+    Server overhead ($\mu$s) & -- & -- & -- \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\shot{07_benchmark_summary.png}{Benchmark summary output.}{fig:bench}
+\shot{08_latency_overhead.png}{Latency and processing overhead by case.}{fig:chart}
+
+\section{Problems and Solutions}
+\todo{Real problems found during the workshop and how they were solved.}
+
+\section{Discussion}
+\todo{Cost of validation (A vs A-control); what the schema prevents (Fig.~\ref{fig:bad}); when each approach fits the project; limits: WSL2 shares the hardware, so latency is virtual-network latency.}
+
+\section{Conclusions}
+\todo{2--3 sentences.}
+
+\section*{Source Code}
+\url{https://github.com/mishellguanoc/DIST_WORKSHOPS/tree/main/workshop7}
+
+\begin{thebibliography}{1}
+\bibitem{jsonschema} JSON Schema, ``Draft 2020-12,'' \url{https://json-schema.org/draft/2020-12}.
+\bibitem{meta} Meta, ``WhatsApp Business Platform Cloud API documentation.''
+\end{thebibliography}
+
+\end{document}

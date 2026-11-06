@@ -1,0 +1,45 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:workshop7:webhook-response",
+  "title": "WebhookResponse",
+  "description": "Answer from ingestion to POST /webhook: either accepted or rejected.",
+  "oneOf": [
+    { "$ref": "#/$defs/accepted" },
+    { "$ref": "#/$defs/rejected" }
+  ],
+  "$defs": {
+    "accepted": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "msg_id", "partition", "stream", "sequence"],
+      "properties": {
+        "status": { "const": "accepted" },
+        "msg_id": { "type": "string", "minLength": 1 },
+        "partition": { "type": "integer", "minimum": 0 },
+        "stream": { "type": "string", "minLength": 1 },
+        "sequence": { "type": "integer", "minimum": 1 }
+      }
+    },
+    "rejected": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "errors"],
+      "properties": {
+        "status": { "const": "rejected" },
+        "errors": {
+          "type": "array",
+          "minItems": 1,
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["path", "message"],
+            "properties": {
+              "path": { "type": "string" },
+              "message": { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

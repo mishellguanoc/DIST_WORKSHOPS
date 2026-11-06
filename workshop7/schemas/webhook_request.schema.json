@@ -1,0 +1,52 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:workshop7:webhook-request",
+  "title": "WebhookRequest",
+  "description": "One delivery of a customer message from wa_mock to ingestion (POST /webhook).",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "msg_id",
+    "customer_id",
+    "session_id",
+    "t_customer",
+    "body",
+    "delivery_attempt"
+  ],
+  "properties": {
+    "msg_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Message identifier, repeated across redeliveries."
+    },
+    "customer_id": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Customer identifier, used as the partition key."
+    },
+    "session_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "t_customer": {
+      "type": "string",
+      "format": "date-time",
+      "description": "RFC 3339 time at which the customer sent the message."
+    },
+    "body": {
+      "type": "string",
+      "minLength": 1,
+      "maxLength": 4096
+    },
+    "delivery_attempt": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "1 for the first delivery, higher for redeliveries."
+    },
+    "edge_case": {
+      "type": "string",
+      "minLength": 1,
+      "description": "Optional label set by the generator."
+    }
+  }
+}
