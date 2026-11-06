@@ -1,0 +1,458 @@
+{
+  "meta": {
+    "finished_at": "2026-11-06T05:05:00+00:00",
+    "requests_per_case": 1000,
+    "warmup_rounds": 100,
+    "seed": 7,
+    "server_ip": "172.30.27.51",
+    "client": {
+      "system": "Windows",
+      "release": "11",
+      "python": "3.12.10"
+    },
+    "servers": {
+      "ingestion": {
+        "system": "Linux",
+        "release": "6.18.33.2-microsoft-standard-WSL2",
+        "python": "3.12.16",
+        "client_seen_as": "172.30.16.1"
+      },
+      "wa_mock": {
+        "system": "Linux",
+        "release": "6.18.33.2-microsoft-standard-WSL2",
+        "python": "3.12.16",
+        "client_seen_as": "172.30.16.1"
+      }
+    }
+  },
+  "cases": {
+    "A": {
+      "samples": 1000,
+      "unexpected": 0,
+      "status_counts": {
+        "200": 1000
+      },
+      "bytes": {
+        "request_body": {
+          "mean": 177.499,
+          "median": 179.0,
+          "p95": 202.0,
+          "p99": 226.0
+        },
+        "response_body": {
+          "mean": 93.0,
+          "median": 93.0,
+          "p95": 93.0,
+          "p99": 93.0
+        },
+        "request_total": {
+          "mean": 383.499,
+          "median": 385.0,
+          "p95": 408.0,
+          "p99": 432.0
+        },
+        "response_total": {
+          "mean": 218.0,
+          "median": 218.0,
+          "p95": 218.0,
+          "p99": 218.0
+        },
+        "exchange_total": {
+          "mean": 601.499,
+          "median": 603.0,
+          "p95": 626.0,
+          "p99": 650.0
+        },
+        "timing_header_excluded": {
+          "mean": 145.0,
+          "median": 145.0,
+          "p95": 145.0,
+          "p99": 145.0
+        }
+      },
+      "latency_ms": {
+        "rtt": {
+          "mean": 1.4045045,
+          "median": 1.3796499999999998,
+          "p95": 1.569925,
+          "p99": 1.7074969999999998
+        },
+        "one_way_estimate": {
+          "mean": 0.70225225,
+          "median": 0.6898249999999999,
+          "p95": 0.7849625,
+          "p99": 0.8537484999999999
+        },
+        "transfer": {
+          "mean": 1.1689865,
+          "median": 1.1461000000000001,
+          "p95": 1.3255799999999998,
+          "p99": 1.457153
+        }
+      },
+      "overhead_ms": {
+        "client": {
+          "mean": 0.365958,
+          "median": 0.36244999999999994,
+          "p95": 0.39721999999999996,
+          "p99": 0.45392899999999997
+        },
+        "server": {
+          "mean": 0.23551800000000003,
+          "median": 0.231,
+          "p95": 0.27,
+          "p99": 0.31504999999999994
+        },
+        "total": {
+          "mean": 0.601476,
+          "median": 0.595,
+          "p95": 0.6616,
+          "p99": 0.7428189999999998
+        }
+      },
+      "stages_ms": {
+        "client_validate_request_ms": {
+          "mean": 0.1022744,
+          "median": 0.1016,
+          "p95": 0.11530499999999999,
+          "p99": 0.14530200000000001
+        },
+        "client_serialize_ms": {
+          "mean": 0.0956236,
+          "median": 0.0942,
+          "p95": 0.10250499999999999,
+          "p99": 0.13112399999999996
+        },
+        "client_parse_ms": {
+          "mean": 0.010946299999999999,
+          "median": 0.0108,
+          "p95": 0.0119,
+          "p99": 0.014603999999999997
+        },
+        "client_validate_response_ms": {
+          "mean": 0.1571137,
+          "median": 0.1549,
+          "p95": 0.17150500000000002,
+          "p99": 0.21070999999999998
+        },
+        "server_parse_ms": {
+          "mean": 0.011094000000000001,
+          "median": 0.011,
+          "p95": 0.012,
+          "p99": 0.014009999999999991
+        },
+        "server_validate_request_ms": {
+          "mean": 0.09047599999999999,
+          "median": 0.088,
+          "p95": 0.10704999999999995,
+          "p99": 0.14700999999999997
+        },
+        "server_handle_ms": {
+          "mean": 0.008282,
+          "median": 0.008,
+          "p95": 0.009,
+          "p99": 0.01100999999999999
+        },
+        "server_validate_response_ms": {
+          "mean": 0.11421200000000002,
+          "median": 0.112,
+          "p95": 0.13304999999999997,
+          "p99": 0.16702999999999998
+        },
+        "server_serialize_ms": {
+          "mean": 0.011391000000000002,
+          "median": 0.011,
+          "p95": 0.012,
+          "p99": 0.014
+        }
+      }
+    },
+    "A-control": {
+      "samples": 1000,
+      "unexpected": 0,
+      "status_counts": {
+        "200": 1000
+      },
+      "bytes": {
+        "request_body": {
+          "mean": 177.499,
+          "median": 179.0,
+          "p95": 202.0,
+          "p99": 226.0
+        },
+        "response_body": {
+          "mean": 93.0,
+          "median": 93.0,
+          "p95": 93.0,
+          "p99": 93.0
+        },
+        "request_total": {
+          "mean": 391.499,
+          "median": 393.0,
+          "p95": 416.0,
+          "p99": 440.0
+        },
+        "response_total": {
+          "mean": 218.0,
+          "median": 218.0,
+          "p95": 218.0,
+          "p99": 218.0
+        },
+        "exchange_total": {
+          "mean": 609.499,
+          "median": 611.0,
+          "p95": 634.0,
+          "p99": 658.0
+        },
+        "timing_header_excluded": {
+          "mean": 88.0,
+          "median": 88.0,
+          "p95": 88.0,
+          "p99": 88.0
+        }
+      },
+      "latency_ms": {
+        "rtt": {
+          "mean": 1.1403562000000003,
+          "median": 1.125,
+          "p95": 1.292215,
+          "p99": 1.41711
+        },
+        "one_way_estimate": {
+          "mean": 0.5701781000000001,
+          "median": 0.5625,
+          "p95": 0.6461075,
+          "p99": 0.708555
+        },
+        "transfer": {
+          "mean": 1.1116132,
+          "median": 1.09665,
+          "p95": 1.259685,
+          "p99": 1.385813
+        }
+      },
+      "overhead_ms": {
+        "client": {
+          "mean": 0.1058871,
+          "median": 0.10450000000000001,
+          "p95": 0.113605,
+          "p99": 0.13470899999999997
+        },
+        "server": {
+          "mean": 0.028743000000000008,
+          "median": 0.028,
+          "p95": 0.032,
+          "p99": 0.04500999999999999
+        },
+        "total": {
+          "mean": 0.13463010000000003,
+          "median": 0.13275,
+          "p95": 0.14590999999999998,
+          "p99": 0.17292799999999997
+        }
+      },
+      "stages_ms": {
+        "client_validate_request_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "client_serialize_ms": {
+          "mean": 0.0948275,
+          "median": 0.0936,
+          "p95": 0.10170499999999999,
+          "p99": 0.12032799999999998
+        },
+        "client_parse_ms": {
+          "mean": 0.0110596,
+          "median": 0.0109,
+          "p95": 0.0117,
+          "p99": 0.01380999999999999
+        },
+        "client_validate_response_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_parse_ms": {
+          "mean": 0.010426,
+          "median": 0.01,
+          "p95": 0.011,
+          "p99": 0.013
+        },
+        "server_validate_request_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_handle_ms": {
+          "mean": 0.007739000000000003,
+          "median": 0.008,
+          "p95": 0.009,
+          "p99": 0.010009999999999991
+        },
+        "server_validate_response_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_serialize_ms": {
+          "mean": 0.010511000000000001,
+          "median": 0.01,
+          "p95": 0.011,
+          "p99": 0.014
+        }
+      }
+    },
+    "B": {
+      "samples": 1000,
+      "unexpected": 0,
+      "status_counts": {
+        "200": 810,
+        "400": 190
+      },
+      "bytes": {
+        "request_body": {
+          "mean": 197.898,
+          "median": 199.0,
+          "p95": 200.0,
+          "p99": 200.0
+        },
+        "response_body": {
+          "mean": 47.66,
+          "median": 45.0,
+          "p95": 59.0,
+          "p99": 59.0
+        },
+        "request_total": {
+          "mean": 404.898,
+          "median": 406.0,
+          "p95": 407.0,
+          "p99": 407.0
+        },
+        "response_total": {
+          "mean": 174.37,
+          "median": 170.0,
+          "p95": 193.0,
+          "p99": 193.0
+        },
+        "exchange_total": {
+          "mean": 579.268,
+          "median": 576.0,
+          "p95": 600.0,
+          "p99": 600.0
+        },
+        "timing_header_excluded": {
+          "mean": 88.0,
+          "median": 88.0,
+          "p95": 88.0,
+          "p99": 88.0
+        }
+      },
+      "latency_ms": {
+        "rtt": {
+          "mean": 1.1203193,
+          "median": 1.0968499999999999,
+          "p95": 1.31385,
+          "p99": 1.4938329999999997
+        },
+        "one_way_estimate": {
+          "mean": 0.56015965,
+          "median": 0.5484249999999999,
+          "p95": 0.656925,
+          "p99": 0.7469164999999999
+        },
+        "transfer": {
+          "mean": 1.0930773000000003,
+          "median": 1.0699,
+          "p95": 1.28685,
+          "p99": 1.465633
+        }
+      },
+      "overhead_ms": {
+        "client": {
+          "mean": 0.1035981,
+          "median": 0.10200000000000001,
+          "p95": 0.1103,
+          "p99": 0.14501899999999998
+        },
+        "server": {
+          "mean": 0.027242000000000013,
+          "median": 0.026,
+          "p95": 0.03,
+          "p99": 0.05204999999999995
+        },
+        "total": {
+          "mean": 0.13084010000000001,
+          "median": 0.12860000000000002,
+          "p95": 0.14562499999999998,
+          "p99": 0.18416399999999997
+        }
+      },
+      "stages_ms": {
+        "client_validate_request_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "client_serialize_ms": {
+          "mean": 0.0937846,
+          "median": 0.0923,
+          "p95": 0.099505,
+          "p99": 0.13511199999999998
+        },
+        "client_parse_ms": {
+          "mean": 0.0098135,
+          "median": 0.0096,
+          "p95": 0.010504999999999995,
+          "p99": 0.013308999999999991
+        },
+        "client_validate_response_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_parse_ms": {
+          "mean": 0.011497000000000004,
+          "median": 0.011,
+          "p95": 0.013,
+          "p99": 0.018
+        },
+        "server_validate_request_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_handle_ms": {
+          "mean": 0.005288000000000001,
+          "median": 0.005,
+          "p95": 0.006,
+          "p99": 0.008
+        },
+        "server_validate_response_ms": {
+          "mean": 0.0,
+          "median": 0.0,
+          "p95": 0.0,
+          "p99": 0.0
+        },
+        "server_serialize_ms": {
+          "mean": 0.010401,
+          "median": 0.01,
+          "p95": 0.011,
+          "p99": 0.015
+        }
+      }
+    }
+  },
+  "schema_cost_median_ms": {
+    "overhead": 0.46224999999999994,
+    "rtt": 0.2546499999999998
+  }
+}
